@@ -224,33 +224,97 @@ Ejercicio 8
 Queremos guardar los nombres y la edades de los alumnos de un curso. Realiza un programa 
 que introduzca el nombre y la edad de cada alumno. El proceso de lectura de datos terminará 
 cuando se introduzca como nombre un asterisco (*) Al finalizar se mostrará los siguientes datos:
-'''
+
+Todos lo alumnos mayores de edad.
+Los alumnos mayores (los que tienen más edad).
+
 alumnos = []
 
-addName = input("Name: ")
-addSurname = input("Surname: ")
+# Entrada de datos
+while True:
+    addName = input("Name (o * para terminar): ")
+    if addName == '*':
+        break
+    addAge = int(input("Age: "))
+    alumnos.append((addName, addAge))
 
-alumnos.extend(addSurname)
+# Mostrar mayores de edad
+print("\nMayores de edad")
+for addName, addAge in alumnos:
+    if addAge >= 18:
+        print(f"Name: {addName}, Age: {addAge}")
 
-
-print(alumnos)
-
-
+# Mostrar menores de edad
+print("\nMenores de edad")
+for addName, addAge in alumnos:
+    if addAge < 18:
+        print(f"Name: {addName}, Age: {addAge}")
 '''
-Todos lo alumnos mayores de edad.
-Los alumnos mayores (los que tienen más edad)
+1
+'''
 Ejercicio 9
 Queremos guardar la temperatura mínima y máxima de 5 días. Realiza un programa que de la siguiente información:
 
 La temperatura media de cada día
 Los días con menos temperatura
-Se lee una temperatura por teclado y se muestran los días cuya temperatura máxima coincide con ella. si no existe ningún día se muestra un mensaje de información.
+Se lee una temperatura por teclado y se muestran los días cuya temperatura máxima coincide con ella. si no existe 
+ningún día se muestra un mensaje de información.
+
+# Inicializamos listas para guardar las temperaturas mínimas y máximas
+temperaturas_min = []
+temperaturas_max = []
+
+# Pedimos al usuario las temperaturas de 5 días
+for i in range(5):
+    print(f"Día {i + 1}:")
+    temp_min = float(input("Introduce la temperatura mínima: "))
+    temp_max = float(input("Introduce la temperatura máxima: "))
+    temperaturas_min.append(temp_min)
+    temperaturas_max.append(temp_max)
+
+# 1. Calcular la temperatura media de cada día
+print("\nTemperaturas medias de cada día:")
+for i in range(5):
+    temp_media = (temperaturas_min[i] + temperaturas_max[i]) / 2
+    print(f"Día {i + 1}: {temp_media:.2f}°C")
+
+# 2. Encontrar los días con la temperatura mínima más baja
+min_temp = min(temperaturas_min)  # Encuentra la mínima de las mínimas
+dias_min_temp = [i + 1 for i, temp in enumerate(temperaturas_min) if temp == min_temp]
+print(f"\nLos días con la temperatura mínima más baja ({min_temp}°C): {dias_min_temp}")
+
+# 3. Buscar días con una temperatura máxima igual a la introducida por el usuario
+temp_a_buscar = float(input("\nIntroduce una temperatura máxima para buscar: "))
+dias_temp_max = [i + 1 for i, temp in enumerate(temperaturas_max) if temp == temp_a_buscar]
+
+# Mostrar los días que coinciden o un mensaje si no hay coincidencias
+if dias_temp_max:
+    print(f"La temperatura máxima {temp_a_buscar}°C coincide en los días: {dias_temp_max}")
+else:
+    print(f"No hay ningún día con una temperatura máxima de {temp_a_buscar}°C.")
+
+'''
+
+'''
 Ejercicio 10
 Diseñar el algoritmo correspondiente a un programa, que:
 
 Crea una tabla (lista con dos dimensiones) de 5x5 enteros.
 Carga la tabla con valores numéricos enteros.
 Suma todos los elementos de cada fila y todos los elementos de cada columna visualizando los resultados en pantalla.
+'''
+import random
+ 
+# Crear una tabla 5x5 con números aleatorios entre 1 y 100
+table = [[random.randint(1, 100) for _ in range(5)] for _ in range(5)]
+
+# Imprimir la tabla
+for row in table:
+    print(row)
+
+
+
+'''
 Ejercicio 11
 Diseñar el algoritmo correspondiente a un programa, que:
 
