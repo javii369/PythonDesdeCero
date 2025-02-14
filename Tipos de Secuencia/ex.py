@@ -250,7 +250,7 @@ for addName, addAge in alumnos:
     if addAge < 18:
         print(f"Name: {addName}, Age: {addAge}")
 '''
-1
+
 '''
 Ejercicio 9
 Queremos guardar la temperatura mínima y máxima de 5 días. Realiza un programa que de la siguiente información:
@@ -302,17 +302,28 @@ Diseñar el algoritmo correspondiente a un programa, que:
 Crea una tabla (lista con dos dimensiones) de 5x5 enteros.
 Carga la tabla con valores numéricos enteros.
 Suma todos los elementos de cada fila y todos los elementos de cada columna visualizando los resultados en pantalla.
-'''
+
 import random
- 
-# Crear una tabla 5x5 con números aleatorios entre 1 y 100
-table = [[random.randint(1, 100) for _ in range(5)] for _ in range(5)]
+tabla = []
 
-# Imprimir la tabla
-for row in table:
-    print(row)
+for indice_fila in range(1,6):
+    fila = []
+    for indice_col in range(1,6):
+        fila.append(int(input('Introduce el número de la fila %d y columna %d:' % (indice_fila, indice_col))))
+    tabla.append(fila)
+        
+indice_fila = 1
+for fila in tabla:
+    print('La suma de los elemento de la fila %d es %d' (indice_fila, sum(fila)))
+    indice_fila += 1
 
-
+#Suma de columnas
+for indice_col in range(1,6):
+    suma = 0
+    for fila in tabla:
+        suma = suma + fila[indice_col -1]
+    print('La suma de los elementos de la columna %d es %d' % (indice_col, suma))
+'''
 
 '''
 Ejercicio 11
